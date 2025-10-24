@@ -3,40 +3,19 @@
     <v-row>
       <!-- Sidebar Filters -->
       <v-col cols="12" md="3">
-        <FilterSidebar
-          :filters="filters"
-          :categoryOptions="categoryOptions"
-          :minPrice="minPrice"
-          :maxPrice="maxPrice"
-        />
+        <FilterSidebar :filters="filters" :categoryOptions="categoryOptions" :minPrice="minPrice"
+          :maxPrice="maxPrice" />
       </v-col>
       <!-- Product Cards/Grid -->
       <v-col cols="12" md="9">
         <v-row>
-          <v-col
-            v-for="product in pageProducts"
-            :key="product.id"
-            cols="12" sm="6" md="4"
-          >
-            <ProductCard
-              :product="product"
-              @click="goToDetail"
-              @add-to-cart="addToCart"
-            />
+          <v-col v-for="product in pageProducts" :key="product.id" cols="12" sm="6" md="4">
+            <ProductCard :product="product" @click="goToDetail" @add-to-cart="addToCart" />
           </v-col>
         </v-row>
         <!-- Pagination & Page Size Controls -->
-        <v-pagination
-          v-model="pagination.page"
-          :length="totalPages"
-          class="mt-4"
-        />
-        <v-select
-          v-model="pagination.pageSize"
-          :items="[10, 20, 50]"
-          label="Page Size"
-          class="mt-4"
-        />
+        <v-pagination v-model="pagination.page" :length="totalPages" class="mt-4" />
+        <v-select v-model="pagination.pageSize" :items="[10, 20, 50]" label="Page Size" class="mt-4" />
       </v-col>
     </v-row>
   </v-container>
@@ -73,7 +52,7 @@ function goToDetail(id) {
   router.push({ name: 'ProductDetail', params: { id } })
 }
 function addToCart(product) {
-  // handle cart logic, alert, etc.
+  alert("added to cart")
 }
 
 // --- Data Fetch ---
